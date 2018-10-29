@@ -2,9 +2,16 @@ require 'nokogiri'
 require 'open-uri'
 require 'byebug'
 
-namespace :locations do
+namespace :critics do
   desc "TODO"
-  task import: :environment do
+  task scrub_ebert: :environment do
+    Critic.all.each do |critic|
+      if (critic.reviews.count == 0)
+        critic.destroy!
+      end
+    end
+  end
+  task import_ebert: :environment do
     # Variable storage--put stuff here
     page = Nokogiri::HTML(open('https://www.rogerebert.com/contributors'))
     critic_links = []
@@ -22,6 +29,7 @@ namespace :locations do
         {name:'',
         page_link: critic_url,
         bio: critic_page.xpath('//section[@class="about"]').text,
+        name: critic_page.xpath('//figcaption/h1').text,
         reviews: []}
         )
     end
@@ -35,11 +43,26 @@ namespace :locations do
       review_objs.each do |object|
         review_links.push object.text
       end
-      critic[:reviews].push review_links.slice(0,7)
+      critic[:reviews] = review_links.slice(0,7)
     end
     critics_arr.each do |critic|
-
+      critic_created = Critic.create ({
+        name: critic[:name],
+        bio: critic[:bio],
+        critic_page: critic[:page_link],
+        origin: 'ebert'
+      })
+      critic[:reviews].each do |review|
+        review_url = "https://www.rogerebert.com" + review
+        review_page = Nokogiri::HTML(open(review_url))
+        review_created = Review.create ({
+          url: review,
+          movie_title: review_page.xpath("//h1[@itemprop='name']").text,
+          dec: 4,
+          num: 0
+        })
+        critic_created.reviews << review_created
+      end
     end
-    byebug
   end
 end

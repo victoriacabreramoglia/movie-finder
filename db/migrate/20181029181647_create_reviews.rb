@@ -4,7 +4,6 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string :url
       t.decimal :num
       t.decimal :dec
-
       t.timestamps
     end
   end
