@@ -43,7 +43,7 @@ namespace :critics do
       review_objs.each do |object|
         review_links.push object.text
       end
-      critic[:reviews] = review_links.slice(0,7)
+      critic[:reviews] = review_links
     end
     critics_arr.each do |critic|
       critic_created = Critic.create ({
