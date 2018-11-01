@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   require 'json'
   include Clients
-
+  include PersonalityInsights
   has_many :matches
   has_many :critics, through: :matches
   # Include default devise modules. Others available are:
@@ -43,13 +43,20 @@ class User < ApplicationRecord
   # Generate pysch profile
 
   def generate_profile
+    File.open('user_profile.txt', 'w+') do |f|
+      f.write self.timeline
+      f.close
+    end
     client = watson_client
-    profile = client.profile(
-      content: File.open('app/assets/war-and-peace-1.rtf'),
+    psych_profile = client.profile(
+      content: File.open('user_profile.txt'),
       content_type: "text/plain",
       raw_scores: true,
-      consumption_preferences: true
+      consumption_preferences: false
     ).result
+    u = self
+    u.profile = psych_profile
+    u.save
   end
 
   def puts_pwd

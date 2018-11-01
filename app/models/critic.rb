@@ -4,8 +4,9 @@ class Critic < ApplicationRecord
   has_many :users, through: :matches
 
   require 'open-uri'
-
+  require 'json'
   include Clients
+  include PersonalityInsights
 
   def generate_profile
     File.open('profile.txt', 'w+') do |f|
