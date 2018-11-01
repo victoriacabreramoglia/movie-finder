@@ -11,6 +11,11 @@ namespace :critics do
       end
     end
   end
+  task generate_profiles: :environment do
+    Critic.all.each do |critic|
+      critic.generate_profile
+    end
+  end
   task import_ebert: :environment do
     # Variable storage--put stuff here
     page = Nokogiri::HTML(open('https://www.rogerebert.com/contributors'))
