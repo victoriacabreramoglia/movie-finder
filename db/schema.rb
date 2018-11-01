@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_153348) do
+ActiveRecord::Schema.define(version: 2018_11_01_173621) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "critics", force: :cascade do |t|
     t.string "name"
     t.text "bio"
     t.string "critic_page"
     t.string "origin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.json "profile"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "critic_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
