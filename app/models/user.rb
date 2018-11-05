@@ -21,14 +21,14 @@ class User < ApplicationRecord
     # Something here is making this array bad to work with.
     # Stores Twitter gem objects before stringification into db table
     tweets_arr = []
-    tweets = client.user_timeline(16298441, options = {count:  200})
+    tweets = client.user_timeline(self.uid.to_i, options = {count:  200})
     tweets_arr.push tweets
     # Twitter Ruby API restricts calls to 200 tweets/per request
     # Tweet IDs are (roughly) chronologically sequential, so...
     # ...grab `id` of last tweet, and, next time, grab tweets older than that
-    1.times do
+    3.times do
       last_max_id = tweets_arr[0][-1].id
-      tweets = client.user_timeline(16298441, options = {count:  200, max_id: last_max_id})
+      tweets = client.user_timeline(self.uid.to_i, options = {count:  200, max_id: last_max_id})
       tweets_arr.push tweets
     end
     tweets_string = ''
