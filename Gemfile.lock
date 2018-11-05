@@ -1,3 +1,10 @@
+PATH
+  remote: ../omdb-api
+  specs:
+    omdb-api (1.1.0)
+      httparty
+      klass_param
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -146,9 +153,6 @@ GEM
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     oauth (0.5.4)
-    omdb-api (1.1.0)
-      httparty
-      klass_param
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
@@ -284,7 +288,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   nokogiri
-  omdb-api
+  omdb-api!
   omniauth
   omniauth-twitter
   pg
