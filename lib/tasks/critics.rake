@@ -11,11 +11,6 @@ namespace :critics do
       end
     end
   end
-  task generate_profiles: :environment do
-    Critic.all.each do |critic|
-      critic.generate_profile
-    end
-  end
   task import_ebert: :environment do
     # Variable storage--put stuff here
     page = Nokogiri::HTML(open('https://www.rogerebert.com/contributors'))
@@ -48,7 +43,7 @@ namespace :critics do
       review_objs.each do |object|
         review_links.push object.text
       end
-      critic[:reviews] = review_links
+      critic[:reviews] = review_links.slice(0,7)
     end
     critics_arr.each do |critic|
       critic_created = Critic.create ({

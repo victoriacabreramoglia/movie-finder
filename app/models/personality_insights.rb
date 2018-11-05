@@ -37,9 +37,12 @@ require 'json'
       diff = euclidean_distance target, self
       match_arr.push({critic: target.id, distance: diff})
     end
+    # Produces ascending order sorted by euclidean distance
+    match_arr.sort_by! {|match| [match[:distance]]}
+    # Determine how many matches
+    match_arr = match_arr.slice(0,3)
     match_arr.each do |match|
-      critic = Critic.find_by_id(match[:critic])
-      byebug
+      Match.create({critic_id: match[:critic], user_id: self.id})
     end
   end
 
