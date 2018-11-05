@@ -16,4 +16,8 @@ module Clients
       config.access_token_secret = access_token_secret
     end
   end
+
+  def omdb_client
+    client = Omdb::Api::Client.new(api_key: SquidMovie::Application.credentials.omdb[:key])
+  end
 end
