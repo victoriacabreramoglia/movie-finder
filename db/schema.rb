@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_153348) do
+ActiveRecord::Schema.define(version: 2018_10_29_195857) do
 
   create_table "critics", force: :cascade do |t|
     t.string "name"
@@ -29,25 +29,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_153348) do
     t.datetime "updated_at", null: false
     t.string "movie_title"
     t.integer "critic_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: ""
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
-    t.string "access_token"
-    t.string "access_token_secret"
-    t.text "timeline"
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["provider"], name: "index_users_on_provider"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
-    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end

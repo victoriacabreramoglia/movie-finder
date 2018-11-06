@@ -1,5 +1,9 @@
 class User < ApplicationRecord
   require 'json'
+  include Clients
+  include PersonalityInsights
+  has_many :matches
+  has_many :critics, through: :matches
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,24 +15,6 @@ class User < ApplicationRecord
     end
   end
 
-# generate clients to interact with Twitter and IBM APIs
-
-  def watson_client
-    IBMWatson::PersonalityInsightsV3.new(
-      username: SquidMovie::Application.credentials.IBM[:username],
-      password: SquidMovie::Application.credentials.IBM[:password],
-      version: "2017-10-13"
-    )
-  end
-
-  def twitter_client(access_token, access_token_secret)
-    Twitter::REST::Client.new do |config|
-      config.consumer_key        = SquidMovie::Application.credentials.twitter[:public_key]
-      config.consumer_secret     = SquidMovie::Application.credentials.twitter[:secret_key]
-      config.access_token        = access_token
-      config.access_token_secret = access_token_secret
-    end
-  end
 # populate User.timeline with a string of last 400 tweets
   def grab_tweets
     client = twitter_client(self.access_token, self.access_token_secret)
@@ -40,7 +26,7 @@ class User < ApplicationRecord
     # Twitter Ruby API restricts calls to 200 tweets/per request
     # Tweet IDs are (roughly) chronologically sequential, so...
     # ...grab `id` of last tweet, and, next time, grab tweets older than that
-    1.times do
+    3.times do
       last_max_id = tweets_arr[0][-1].id
       tweets = client.user_timeline(self.uid.to_i, options = {count:  200, max_id: last_max_id})
       tweets_arr.push tweets
@@ -57,14 +43,20 @@ class User < ApplicationRecord
   # Generate pysch profile
 
   def generate_profile
+    File.open('user_profile.txt', 'w+') do |f|
+      f.write self.timeline
+      f.close
+    end
     client = watson_client
-    content = File
-    profile = client.profile(
-      content: File.open('app/assets/war-and-peace-1.rtf'),
+    psych_profile = client.profile(
+      content: File.open('user_profile.txt'),
       content_type: "text/plain",
       raw_scores: true,
-      consumption_preferences: true
+      consumption_preferences: false
     ).result
+    u = self
+    u.profile = psych_profile
+    u.save
   end
 
   def puts_pwd

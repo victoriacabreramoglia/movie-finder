@@ -1,6 +1,8 @@
 module Clients
+  
   require 'klass_param'
   include KlassParam
+
   def watson_client
     IBMWatson::PersonalityInsightsV3.new(
       username: SquidMovie::Application.credentials.IBM[:username],
