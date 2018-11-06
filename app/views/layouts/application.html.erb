@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <header class="page__nav">
+      <%= image_tag("nav__header-menu.png", class: "page__nav-header") %>
+      <%= image_tag("logo.png", class: "page__nav-logo") %>
+      <button class="nav__header-account-button"></button>
+    </header>
     <%= yield %>
   </body>
 </html>

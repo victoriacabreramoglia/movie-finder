@@ -1,0 +1,31 @@
+$primary-color: #af81be;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.page__nav {
+  background-color: $primary-color;
+  display: block;
+  height: 25px;
+  padding: 10px 10px;
+}
+
+.page__nav-header {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+}
+
+.page__nav-logo {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+}
+
+.page__nav-account-button {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+}
