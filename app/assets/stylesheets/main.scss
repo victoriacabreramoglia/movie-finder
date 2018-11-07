@@ -1,4 +1,5 @@
-$primary-color: #af81be;
+$primary-color: #c863e8;
+$secondary-color: #2a80ea;
 
 * {
   margin: 0;
@@ -19,13 +20,30 @@ $primary-color: #af81be;
 
 .page__nav-logo {
   display: inline-block;
-  height: 100%;
+  height: 187%;
   width: auto;
   margin: 0 auto;
+  position: relative;
+  top: -18px;
+  border: solid 2px $secondary-color;
+  background-color: $secondary-color;
+  border-radius: 72px;
+  padding: 5px;
 }
 
 .page__nav-account-button {
-  display: inline-block;
+  padding: 5px 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: $secondary-color;
+}
+
+button a {
+  text-decoration: none;
+  color: white;
+  border: none;
+}
+
+.u-100 {
   height: 100%;
-  width: auto;
 }

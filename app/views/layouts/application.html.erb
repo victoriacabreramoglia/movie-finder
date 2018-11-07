@@ -10,10 +10,22 @@
   </head>
 
   <body>
-    <header class="page__nav">
-      <%= image_tag("nav__header-menu.png", class: "page__nav-header") %>
-      <%= image_tag("logo.png", class: "page__nav-logo") %>
-      <button class="nav__header-account-button"></button>
+    <header class="page__nav grid grid--flush">
+      <div class="grid__cell 1/3 u-100">
+        <%= image_tag("nav__header-menu.png", class: "page__nav-header") %>
+      </div>
+      <div class="grid__cell 1/3 u-100 grid--center">
+        <%= image_tag("logo.png", class: "page__nav-logo") %>
+      </div>
+      <div class="grid__cell 1/3 u-100 grid--right">
+        <button class="page__nav-account-button">
+          <% if user_signed_in? %>
+            <%= link_to('My Dashboard') %>
+        <% else %>
+            <<%= link_to('Get Started',new_user_session_path) %>
+        <% end %>
+        </button>
+      </div>
     </header>
     <%= yield %>
   </body>
