@@ -1,9 +1,11 @@
 $primary-color: #c863e8;
 $secondary-color: #2a80ea;
+$off-white: #e1e3f1;
 
 * {
   margin: 0;
   padding: 0;
+  font-family: "Fira Sans", sans-serif;
 }
 .page__nav {
   background-color: $primary-color;
@@ -12,10 +14,25 @@ $secondary-color: #2a80ea;
   padding: 10px 10px;
 }
 
-.page__nav-header {
+.page__nav-menu {
   display: inline-block;
   height: 100%;
   width: auto;
+}
+
+.page__nav-menu-accordion {
+  background-color: $off-white;
+  height: auto;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  left: -9px;
+  top: 6px;
+}
+
+.page__nav-menu-accordion-item {
+  border: solid 1px grey;
+  height: 66px;
 }
 
 .page__nav-logo {

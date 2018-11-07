@@ -4,15 +4,15 @@
     <title>SquidMovie</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header class="page__nav grid grid--flush">
       <div class="grid__cell 1/3 u-100">
-        <%= image_tag("nav__header-menu.png", class: "page__nav-header") %>
+        <%= image_tag("nav__header-menu.png", class: "page__nav-menu") %>
       </div>
       <div class="grid__cell 1/3 u-100 grid--center">
         <%= image_tag("logo.png", class: "page__nav-logo") %>
