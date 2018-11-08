@@ -1,4 +1,6 @@
 $primary-color: #c863e8;
+$primary-color-background: rgba(200, 99, 232, 0.5);
+$primary-gradient: #bd3de6;
 $secondary-color: #2a80ea;
 $off-white: #e1e3f1;
 
@@ -7,11 +9,20 @@ $off-white: #e1e3f1;
   padding: 0;
   font-family: "Fira Sans", sans-serif;
 }
+
+h1 {
+  color: white;
+  font-size: 36px;
+  // background-color: $primary-color-background;
+  display: inline-block;
+}
 .page__nav {
-  background-color: $primary-color;
+  background: linear-gradient(to left, $primary-color, $primary-gradient);
   display: block;
   height: 25px;
-  padding: 10px 10px;
+  width: 100%;
+  padding: 10px 10px 16px 10px;
+  position: fixed;
 }
 
 .page__nav-menu {
@@ -42,17 +53,24 @@ $off-white: #e1e3f1;
   margin: 0 auto;
   position: relative;
   top: -18px;
-  border: solid 2px $secondary-color;
+  border: solid 2px white;
   background-color: $secondary-color;
   border-radius: 72px;
   padding: 5px;
 }
 
-.page__nav-account-button {
+button {
   padding: 5px 5px;
+  margin-right: 11px;
   font-size: 16px;
   border-radius: 10px;
   background-color: $secondary-color;
+  border: solid 2px white;
+}
+
+.twitter-button {
+  background-color: lightblue;
+  font: white;
 }
 
 button a {
@@ -61,6 +79,30 @@ button a {
   border: none;
 }
 
+.slide {
+  background-color: black;
+  height: calc(100vh - 51px);
+}
+
+.root__slide-1 {
+  background-image: url("root__slide-1.jpg");
+  background-size: cover;
+  padding: 75px 0px;
+}
+
+.root__slide-1-text-area {
+  height: 80%;
+  border: solid 1px red;
+}
+
 .u-100 {
   height: 100%;
+}
+
+.u-100vh {
+  height: 100vh;
+}
+
+.u-bg-blue {
+  background-color: blue;
 }

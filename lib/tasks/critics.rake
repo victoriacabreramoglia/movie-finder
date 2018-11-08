@@ -6,9 +6,19 @@ namespace :critics do
   desc "TODO"
   task scrub_ebert: :environment do
     Critic.all.each do |critic|
-      if (critic.reviews.count == 0)
+      if (critic.reviews.count < 4)
         critic.destroy!
       end
+    end
+  end
+
+  task generate_favorites: :environment do
+    Review.all.each do |r|
+      r.favorite = false
+      r.save
+    end
+    Critic.all.each do |c|
+      c.generate_favorites
     end
   end
 

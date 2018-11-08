@@ -44,6 +44,7 @@ require 'json'
     match_arr.each do |match|
       Match.create({critic_id: match[:critic], user_id: self.id})
     end
+    matches = self.matches
   end
 
 end

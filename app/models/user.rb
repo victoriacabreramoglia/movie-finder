@@ -59,8 +59,4 @@ class User < ApplicationRecord
     u.save
   end
 
-  def puts_pwd
-    Dir.getwd
-  end
-
 end

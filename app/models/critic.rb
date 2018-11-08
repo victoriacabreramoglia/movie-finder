@@ -45,4 +45,13 @@ class Critic < ApplicationRecord
     review_text
   end
 
+  def generate_favorites
+    self.reviews.each do |r|
+      if r.num == 4.0
+        r.favorite = true
+        r.save
+      end
+    end
+  end
+
 end
