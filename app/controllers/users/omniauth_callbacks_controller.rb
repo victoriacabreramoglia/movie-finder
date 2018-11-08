@@ -6,11 +6,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.grab_tweets
     @user.generate_profile
     @user.generate_matches
-    @match = @user.matches.first
+    @matches = @user.matches.first
+
     # Uh oh, conceptual apparatus breaks: we actually only have a Review model, no Movie yet
-    @review_rec = @match.recommend_movies.first
+    @review_rec = @matches.recommend_movies.first
     @user.save
-    byebug
-     sign_in_and_redirect @user
+     sign_in @user
+     redirect_to movie_show_path(review_id: @review_rec.id)
   end
 end
