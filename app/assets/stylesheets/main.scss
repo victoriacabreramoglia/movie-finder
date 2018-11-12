@@ -67,6 +67,8 @@ button a {
   display: inline-block;
   height: 100%;
   width: auto;
+  position: relative;
+  top: 3px;
 }
 
 .page__nav-menu-accordion {
@@ -76,12 +78,14 @@ button a {
   width: 100%;
   position: relative;
   left: -9px;
-  top: 6px;
+  top: 12px;
 }
 
 .page__nav-menu-accordion-item {
   border: solid 1px grey;
-  height: 66px;
+  height: 46px;
+  padding: 27px 0px 0px 23px;
+  text-transform: uppercase;
 }
 
 .page__nav-logo {
