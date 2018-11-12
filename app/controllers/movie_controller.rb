@@ -25,6 +25,9 @@ class MovieController < ApplicationController
             current_user.profile["personality"][4]["raw_score"].to_d
           ]}]
     }
+  end
 
+  def index
+    @reviews = Review.all
   end
 end

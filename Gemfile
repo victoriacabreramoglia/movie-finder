@@ -50,6 +50,9 @@ gem 'twitter'
 gem 'ibm_watson'
 # homebrew OMDB api
 gem 'omdb-api', :path => "../omdb-api"
+# react and related tools
+gem 'webpacker'
+gem 'react-rails'
 # critic comparisons
 gem 'chartjs-ror'
 group :development, :test do
