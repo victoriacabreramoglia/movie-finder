@@ -101,6 +101,18 @@ button a {
   padding: 5px;
 }
 
+footer {
+  height: 45px;
+  display: block;
+  background-color: $secondary-color;
+}
+
+footer button {
+  float: right;
+  margin-top: 5px;
+  background-color: $primary-color;
+}
+
 // 2.a. Root dir components
 
 .slide {
