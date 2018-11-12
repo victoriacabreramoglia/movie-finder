@@ -1,5 +1,7 @@
 {
   "name": "squid-movie",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^2.7.3"
+  }
 }

@@ -36,3 +36,29 @@
     </p>
   </div>
 </section>
+<section class="slide u-bg-2 grid">
+  <div class="movie__show-critic-about grid__cell 1/2">
+    <div>
+      <img  class="critic-pic" src=<%= @review.critic.picture %>>
+    </div>
+    <div>
+      <h1>
+        <%= @review.critic.name %>
+      </h1>
+      <p class="critic-bio">
+        <%= @review.critic.bio %>
+      </p>
+      <%= link_to "Read the review.", @review_url %>
+    </div>
+  </div>
+  <div class="grid__cell 1/2 movie__show-critic-comparison">
+    <canvas id="myChart" width="350" height="350"></canvas>
+    <script>
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'radar',
+        data: <%== @data.to_json %>
+      })
+    </script>
+  </div>
+</section>

@@ -12,6 +12,14 @@ namespace :critics do
     end
   end
 
+  task grab_pictures: :environment do
+    Critic.all.each do |c|
+      page = Nokogiri::HTML(open(c.critic_page))
+      c.picture = page.xpath('//section[@class="main critic pad"]/article/figure/img/@src')
+      c.save
+    end
+  end
+
   task scrub_ebert_lowreviews: :environment do
     Critic.all.each do |critic|
       scrap = true

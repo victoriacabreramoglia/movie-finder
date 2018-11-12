@@ -13,7 +13,8 @@ $primary-gradient: #bd3de6;
 // $secondary-color: #2a80ea;
 $secondary-color: #d6448b;
 $off-white: #e1e3f1;
-$slide-background: #ceacb8;
+$slide-background-1: #ceacb8;
+$slide-background-2: #91b7b5;
 
 * {
   margin: 0;
@@ -100,7 +101,7 @@ button a {
 
 .slide {
   background-color: white;
-  height: 100vh;
+  height: calc(100vh - 51px);
 }
 
 .root__slide-1 {
@@ -116,7 +117,7 @@ button a {
 // 3. Movie components
 // 3.a. Movie show view components
 .movie__show-slide {
-  background-color: $slide-background;
+  background-color: $slide-background-1;
 }
 
 .movie__show-infobox {
@@ -138,10 +139,29 @@ button a {
   margin-top: 5%;
 }
 
+.movie__show-critic-about {
+  padding-left: 45px;
+  position: relative;
+  top: 45px;
+}
+.critic-pic {
+  width: 100%;
+  height: auto;
+}
+
+.critic-bio {
+  overflow-y: scroll;
+  max-height: 222px;
+}
+
 // LAST: Utility classes
 
 .u-100 {
   height: 100%;
+}
+
+.u-slide-half {
+  width: 50%;
 }
 
 .u-first-slide {
@@ -149,12 +169,13 @@ button a {
   position: relative;
   top: 51px;
   z-index: 0;
+  margin-bottom: 51px;
 }
 
-.u-bg-blue {
-  background-color: blue;
+.u-bg-1 {
+  background-color: $slide-background-1;
 }
 
-.u-bg-red {
-  background-color: red;
+.u-bg-2 {
+  background-color: $slide-background-2;
 }
