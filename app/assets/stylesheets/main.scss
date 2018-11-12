@@ -1,8 +1,19 @@
+// INDEX
+// 1. Universal Settings
+// 2. Site-wide components
+//  2.a. Root dir components: slides, etc.
+// 3. Movie components
+//  3.a. Movie show view components
+// LAST: Utility classes
+
+// 1. Universal settings
 $primary-color: #c863e8;
 $primary-color-background: rgba(200, 99, 232, 0.5);
 $primary-gradient: #bd3de6;
-$secondary-color: #2a80ea;
+// $secondary-color: #2a80ea;
+$secondary-color: #d6448b;
 $off-white: #e1e3f1;
+$slide-background: #ceacb8;
 
 * {
   margin: 0;
@@ -10,12 +21,37 @@ $off-white: #e1e3f1;
   font-family: "Fira Sans", sans-serif;
 }
 
+p {
+  color: white;
+}
+
 h1 {
   color: white;
   font-size: 36px;
-  // background-color: $primary-color-background;
   display: inline-block;
+  margin-bottom: 15px;
 }
+
+button {
+  padding: 5px 5px;
+  margin-right: 11px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: $secondary-color;
+  border: solid 2px white;
+}
+
+.twitter-button {
+  background-color: lightblue;
+  font: white;
+}
+
+button a {
+  text-decoration: none;
+  color: white;
+  border: none;
+}
+// 2. Site-wide components
 .page__nav {
   background: linear-gradient(to left, $primary-color, $primary-gradient);
   display: block;
@@ -23,6 +59,7 @@ h1 {
   width: 100%;
   padding: 10px 10px 16px 10px;
   position: fixed;
+  z-index: 1;
 }
 
 .page__nav-menu {
@@ -59,35 +96,16 @@ h1 {
   padding: 5px;
 }
 
-button {
-  padding: 5px 5px;
-  margin-right: 11px;
-  font-size: 16px;
-  border-radius: 10px;
-  background-color: $secondary-color;
-  border: solid 2px white;
-}
-
-.twitter-button {
-  background-color: lightblue;
-  font: white;
-}
-
-button a {
-  text-decoration: none;
-  color: white;
-  border: none;
-}
+// 2.a. Root dir components
 
 .slide {
-  background-color: black;
-  height: calc(100vh - 51px);
+  background-color: white;
+  height: 100vh;
 }
 
 .root__slide-1 {
-  background-image: url("root__slide-1.jpg");
+  background-image: url(root__slide-1.jpg);
   background-size: cover;
-  padding: 75px 0px;
 }
 
 .root__slide-1-text-area {
@@ -95,14 +113,48 @@ button a {
   border: solid 1px grey;
 }
 
+// 3. Movie components
+// 3.a. Movie show view components
+.movie__show-slide {
+  background-color: $slide-background;
+}
+
+.movie__show-infobox {
+  display: inline-block;
+  width: 450px;
+  vertical-align: top;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.movie__show-infobox-title {
+  color: white;
+}
+
+.movie__show-poster {
+  display: inline-block;
+  width: 300px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+// LAST: Utility classes
+
 .u-100 {
   height: 100%;
 }
 
-.u-100vh {
-  height: 100vh;
+.u-first-slide {
+  height: calc(100vh - 51px);
+  position: relative;
+  top: 51px;
+  z-index: 0;
 }
 
 .u-bg-blue {
   background-color: blue;
+}
+
+.u-bg-red {
+  background-color: red;
 }

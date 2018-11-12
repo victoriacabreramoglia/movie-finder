@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_190759) do
+ActiveRecord::Schema.define(version: 2018_11_09_203014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_190759) do
     t.string "movie_title"
     t.integer "critic_id"
     t.boolean "favorite"
+    t.json "movie"
   end
 
   create_table "users", force: :cascade do |t|

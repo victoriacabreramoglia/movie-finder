@@ -1,5 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
+    # AT SOME POINT, MAKE THIS NOT BE A RESOURCE AND API-CALL HOG
     @user = User.from_omniauth(request.env["omniauth.auth"])
     @user.access_token = request.env["omniauth.auth"]["credentials"]["token"]
     @user.access_token_secret = request.env["omniauth.auth"]["credentials"]["secret"]

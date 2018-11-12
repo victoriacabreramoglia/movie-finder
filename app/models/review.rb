@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :critic
-
+  include Clients
   require 'open-uri'
 
   def generate_score

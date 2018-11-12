@@ -1,11 +1,38 @@
-<h1>Movie#show</h1>
-<p>Find me in app/views/movie/show.html.erb</p>
-<br>
-<br>
-<br>
-You should watch:
-<%= @review.movie_title %>
-.
-<br>
-That's based on your affinity with
-<%= @review.critic.name %>!
+<section class="slide movie__show-slide u-first-slide">
+  <div class="movie__show-poster">
+    <img src=<%= @review.movie["Poster"]%>>
+  </div>
+  <div class="movie__show-infobox">
+    <h1 class="movie__show-infobox-title">
+      <%= @review.movie["Title"]%>
+    </h1>
+    <p>
+      <%= @review.movie["Plot"] %>
+    </p>
+    <br>
+    <p>
+      <strong>
+        Actors:
+      </strong>
+      <%= @review.movie["Actors"]%>
+    </p>
+    <p>
+      <strong>
+        Genres:
+      </strong>
+      <%= @review.movie["Genre"]%>
+    </p>
+    <p>
+      <strong>
+        Critic Score:
+      </strong>
+      <%= @review.num%>/4
+    </p>
+    <p>
+      <strong>
+        Runtime:
+      </strong>
+      <%= @review.movie["Runtime"]%>
+    </p>
+  </div>
+</section>
