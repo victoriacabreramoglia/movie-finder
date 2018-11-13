@@ -26,6 +26,10 @@ p {
   color: white;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   color: white;
   font-size: 36px;
@@ -189,6 +193,19 @@ footer button {
   top: 51px;
 }
 
+.index__movie .index__movie-box:last-child {
+  margin-bottom: 51px;
+}
+
+.index__movie-box {
+  margin-bottom: 20px;
+}
+
+.index__movie-hed {
+  background-color: $slide-background-2;
+  text-decoration-color: none;
+}
+
 .index__movie-poster {
   height: 300px;
 }
@@ -200,12 +217,7 @@ footer button {
 }
 
 .index__movie-info {
-  height: 300px;
-}
-
-.index__movie-info p {
-  overflow: hidden;
-  max-height: 200px;
+  height: auto;
 }
 
 // 4 critic components
