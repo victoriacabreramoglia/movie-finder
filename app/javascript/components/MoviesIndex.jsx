@@ -13,7 +13,10 @@ class MoviesIndex extends React.Component {
           columns={[
             {
               Header: "Title",
-              accessor: "movie_title"
+              id: "id",
+              Cell: d => (
+                <a href={`/movie/show?review_id=${d.id}`}>{d.movie_title}</a>
+              )
             },
             {
               Header: "Plot",
@@ -22,7 +25,9 @@ class MoviesIndex extends React.Component {
             {
               Header: "Poster",
               accessor: "movie.Poster",
-              Cell: row => <img src={`${row.value}`} />
+              Cell: row => (
+                <img class="index-movie-poster" src={`${row.value}`} />
+              )
             }
           ]}
         />

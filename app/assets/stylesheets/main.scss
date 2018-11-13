@@ -177,6 +177,32 @@ footer button {
   max-height: 222px;
 }
 
+// 3.b. Movie index components
+
+.index__movie {
+  position: relative;
+  top: 51px;
+}
+
+.index__movie-poster {
+  height: 300px;
+}
+
+.index__movie-poster img {
+  height: 100%;
+  width: auto;
+  max-width: 212px;
+}
+
+.index__movie-info {
+  height: 300px;
+}
+
+.index__movie-info p {
+  overflow: hidden;
+  max-height: 200px;
+}
+
 // LAST: Utility classes
 
 .u-100 {

@@ -1,0 +1,25 @@
+<section class="movie__show-critic-about slide u-first-slide u-bg-1 grid--flush">
+  <div class="movie__show-critic-about grid__cell 1/2">
+    <div>
+      <img  class="critic-pic" src=<%= @critic.picture %>>
+    </div>
+    <div>
+      <h1>
+        <%= @critic.name %>
+      </h1>
+      <p class="critic-bio">
+        <%= @critic.bio %>
+      </p>
+    </div>
+  </div>
+  <div class="grid__cell 2/5 movie__show-critic-comparison">
+    <canvas id="myChart" width="350" height="350"></canvas>
+    <script>
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'radar',
+        data: <%== @data.to_json %>
+      })
+    </script>
+  </div>
+</section>

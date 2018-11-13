@@ -8,6 +8,15 @@ namespace :reviews do
     end
   end
 
+  task scrub_no_plot: :environment do
+    count = 0
+    Review.all.each do |r|
+      if r.movie["Plot"] === "N/A"
+        r.destroy!
+      end
+    end
+  end
+
   task grab_movies: :environment do
     Review.all.each do |r|
       client = r.omdb_client

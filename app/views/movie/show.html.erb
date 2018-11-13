@@ -1,7 +1,7 @@
 <section class="slide movie__show-slide u-first-slide">
   <div class="movie__show-poster">
     <% if (@review.movie["Plot"] != "N/A") %>
-    <img src=<%= @review.movie["Poster"]%>>
+      <img src=<%= @review.movie["Poster"]%>>
     <% else %>
 
     <% end %>
@@ -37,7 +37,11 @@
       <strong>
         Critic Score:
       </strong>
-      <%= @review.num%>/4
+      <% if @review.num.to_s.slice(1,2) === ".5" %>
+        <%= @review.num.to_s + "/4" %>
+      <% else %>
+        <%= @review.num.to_s.slice(0,1) + "/4" %>
+      <% end %>
     </p>
     <p>
       <strong>

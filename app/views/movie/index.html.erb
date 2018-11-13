@@ -1,4 +1,23 @@
-<%= javascript_pack_tag 'application' %>
-<section class="u-first-slide u-bg-1">
-  <%= react_component("MoviesIndex", {movies: @reviews }) %>
+<section class="index__movie u-bg-1">
+  <% @reviews.slice(0,20).each do |r| %>
+    <div class="grid--flush index__movie-box">
+      <a href=<%="/movie/show?review_id=" + r.id.to_s %>>
+        <div class="grid__cell 1/4 index__movie-poster">
+          <img src=<%= r.movie["Poster"]%>>
+        </div>
+      </a>
+      <div class="grid__cell 1/2 index__movie-info">
+        <a href=<%="/movie/show?review_id=" + r.id.to_s %>>
+          <h1>
+            <%= r.movie_title %>
+          </h1>
+        </a>
+        <p>
+          <%= r.movie["Plot"] %>
+        </p>
+      </div>
+    </a>
+  <% end %>
+    </div>
+  </div>
 </section>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'critics/index'
+  get 'critics/show'
   get 'movie/show'
   get 'movie/index'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
