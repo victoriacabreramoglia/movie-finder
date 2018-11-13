@@ -222,13 +222,23 @@ footer button {
 
 // 4.b. critic index components
 
+.critic__index-box {
+  margin-bottom: 50px;
+}
 .critic__index-pic {
   width: 100%;
   height: auto;
 }
 
+.critic__index-hed {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  line-height: 36px;
+}
+
 .critic__index-infobox {
-  height: 300px;
+  height: auto;
   overflow: hidden;
 }
 

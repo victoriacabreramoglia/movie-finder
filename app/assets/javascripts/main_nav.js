@@ -9,9 +9,11 @@ $(document).ready(function() {
           <div class='page__nav-menu-accordion-item'>
             About
           </div>
-          <div class='page__nav-menu-accordion-item'>
-            Critics
-          </div>
+            <a href="/critics/index">
+              <div class='page__nav-menu-accordion-item'>
+                Critics
+              </div>
+            </a>
           <a href="/movie/index">
             <div class='page__nav-menu-accordion-item'>
               Movies
