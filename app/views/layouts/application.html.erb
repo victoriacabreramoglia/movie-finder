@@ -21,7 +21,7 @@
 
         <button class="page__nav-account-button">
           <% if user_signed_in? %>
-            <%= link_to('My Dashboard') %>
+            <%= link_to('My Dashboard', dashboard_path) %>
         <% else %>
             <%= link_to('Get Started',new_user_session_path) %>
         <% end %>

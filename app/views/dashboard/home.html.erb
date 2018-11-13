@@ -1,0 +1,72 @@
+<section class="u-first-generic user__dash-slide slide grid">
+  <div class="grid__cell 1/6 user__dash-left-nav">
+    <h1 class="user__dash-left-nav-hed">
+      Navigation
+    </h1>
+      <nav>
+        <h2 class="user__dash-nav-item active">
+          Personality
+        </h2>
+    </nav>
+    <nav>
+      <h2 class="user__dash-nav-item ">
+        Critics
+      </h2>
+    </nav>
+    <nav>
+      <h2 class="user__dash-nav-item ">
+        Movies
+      </h2>
+    </nav>
+  </div>
+  <div class="grid__cell 1/2 movie__show-critic-comparison user__dash-solo-radar">
+    <canvas id="myChart" width="350" height="350"></canvas>
+    <script>
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'radar',
+        data: <%== @data.to_json %>
+      })
+    </script>
+  </div>
+  <div class="grid__cell 1/4 user__dash-preferences-box">
+    <h2 class="user__dash-left-nav-subhed">
+      Based on your personality assessment, you are...
+    </h2>
+    <ul>
+      <% current_user.profile["consumption_preferences"][4]["consumption_preferences"].each do |mp| %>
+      <li>
+      <% if mp["score"] === 0.0 %>
+        Not
+        <%= mp["name"].downcase %>
+      <% else %>
+        <%= mp["name"] %>
+          <% end %>
+    </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+<% current_user.profile["personality"].each do |big5_data| %>
+  <section class="user__dash-slide user__dash-slide-bar grid--center">
+    <div class="grid__cell 1/2 user__dash-bar">
+      <canvas id="<%= big5_data["trait_id"] %>" width="350" height="350"></canvas>
+      <script>
+        var ctx = document.getElementById("<%= big5_data["trait_id"] %>").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: <%== big5_data["children"].pluck("name").to_json %>,
+            datasets: [
+              {
+                label: "Percentile score",
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                data: <%== big5_data["children"].pluck("percentile").to_json %>
+              }
+            ]
+          }
+        })
+      </script>
+    </div>
+  </section>
+<% end %>

@@ -52,7 +52,7 @@ class User < ApplicationRecord
       content: File.open('user_profile.txt'),
       content_type: "text/plain",
       raw_scores: true,
-      consumption_preferences: false
+      consumption_preferences: true
     ).result
     u = self
     u.profile = psych_profile

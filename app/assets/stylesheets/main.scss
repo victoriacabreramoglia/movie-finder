@@ -4,6 +4,10 @@
 //  2.a. Root dir components: slides, etc.
 // 3. Movie components
 //  3.a. Movie show view components
+// 4. Critic components
+//
+//
+// 5. User dashboard components
 // LAST: Utility classes
 
 // 1. Universal settings
@@ -15,6 +19,7 @@ $secondary-color: #d6448b;
 $off-white: #e1e3f1;
 $slide-background-1: #ceacb8;
 $slide-background-2: #91b7b5;
+$user-dashboard-background: #d0eaea;
 
 * {
   margin: 0;
@@ -37,6 +42,10 @@ h1 {
   margin-bottom: 15px;
 }
 
+h2 {
+  color: white;
+}
+
 button {
   padding: 5px 5px;
   margin-right: 11px;
@@ -47,8 +56,18 @@ button {
 }
 
 .twitter-button {
-  background-color: lightblue;
+  background-color: #54abed;
   font: white;
+  display: block;
+  margin: 0 auto;
+  padding: 20px 20px;
+  font-weight: 900;
+}
+
+.twitter-button::before {
+  background-image: url(asset_path("twitter-icon.png"));
+  height: 5px;
+  width: 5px;
 }
 
 button a {
@@ -136,9 +155,19 @@ footer button {
   background-size: cover;
 }
 
+.root__slide-hed {
+  background-color: $primary-color-background;
+}
+
+.root__slide-subhed {
+  font-size: 20px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
 .root__slide-1-text-area {
   height: 80%;
-  border: solid 1px grey;
+  padding-top: 55px;
 }
 
 // 3. Movie components
@@ -265,6 +294,74 @@ footer button {
   height: 25px;
 }
 
+// 5. User dashboard components
+
+.user__dash-slide {
+  background-color: $user-dashboard-background;
+  border-bottom: solid 1px #8fb8de;
+}
+
+.user__dash-left-nav {
+  border-right: solid 1px #8fb8de;
+  height: 100%;
+  z-index: 0;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding-top: 51px;
+  background-color: #f1f1f1;
+}
+
+.user__dash-left-nav-hed {
+  color: #8fb8de;
+  padding-top: 10px;
+  font-size: 25px;
+}
+
+.user__dash-left-nav-subhed {
+  display: inline-block;
+  position: relative;
+  top: 9px;
+  margin-bottom: 30px;
+}
+
+li {
+  margin-bottom: 3px;
+  color: white;
+  font-weight: 900;
+}
+
+ul:last-child {
+  margin-bottom: 15px;
+}
+
+.user__dash-solo-radar {
+  margin-left: 190px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.user__dash-bar {
+  height: 70%;
+}
+
+.user__dash-preferences-box {
+  background-color: $primary-color;
+  position: relative;
+  top: 25px;
+  left: 30px;
+}
+
+.user__dash-nav-item {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 14px;
+  color: grey;
+}
+
+.active {
+  color: #5656de;
+}
 // LAST: Utility classes
 
 .u-100 {

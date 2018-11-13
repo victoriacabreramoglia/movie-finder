@@ -6,14 +6,16 @@ $(document).ready(function() {
       nav = true;
       $(this).after(`
         <div class="page__nav-menu-accordion">
-          <div class='page__nav-menu-accordion-item'>
-            About
-          </div>
-            <a href="/critics/index">
-              <div class='page__nav-menu-accordion-item'>
-                Critics
-              </div>
-            </a>
+          <a href="/dashboard">
+            <div class='page__nav-menu-accordion-item'>
+              Dashboard
+            </div>
+          </a>
+          <a href="/critics/index">
+            <div class='page__nav-menu-accordion-item'>
+              Critics
+            </div>
+          </a>
           <a href="/movie/index">
             <div class='page__nav-menu-accordion-item'>
               Movies
