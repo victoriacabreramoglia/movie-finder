@@ -1,2 +1,20 @@
-<h1>Critics#index</h1>
-<p>Find me in app/views/critics/index.html.erb</p>
+<section class="u-bg-2 u-first-generic">
+  <% @critics.each do |c| %>
+    <div class="grid--flush">
+      <div class="grid__cell 1/3">
+        <img src=<%= c.picture %> class="critic__index-pic">
+        <a class="critic__index-out-link" href=<%= c.critic_page%>>View their critic page on rogerebert.com</a>
+      </div>
+      <div class="grid__cell 1/2 critic__index-infobox">
+        <a href=<%= "/critics/show?critic_id="+ c.id.to_s %>>
+          <h1>
+            <%= c.name %>
+          </h1>
+        </a>
+        <p>
+          <%= c.bio %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</section>

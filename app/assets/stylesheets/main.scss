@@ -172,6 +172,11 @@ footer button {
   height: auto;
 }
 
+.plot {
+  overflow: hidden;
+  max-height: 350px;
+}
+
 .critic-bio {
   overflow-y: scroll;
   max-height: 222px;
@@ -203,6 +208,41 @@ footer button {
   max-height: 200px;
 }
 
+// 4 critic components
+// 4.a critic show components
+
+.critic__show-reviews-hed {
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.critic__show-movie-box {
+  margin-bottom: 35px;
+}
+
+// 4.b. critic index components
+
+.critic__index-pic {
+  width: 100%;
+  height: auto;
+}
+
+.critic__index-infobox {
+  height: 300px;
+  overflow: hidden;
+}
+
+.critic__index-out-link {
+  background-color: $secondary-color;
+  color: white;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: -4px;
+  height: 25px;
+}
+
 // LAST: Utility classes
 
 .u-100 {
@@ -219,6 +259,12 @@ footer button {
   top: 51px;
   z-index: 0;
   margin-bottom: 51px;
+}
+
+.u-first-generic {
+  position: relative;
+  top: 51px;
+  padding-left: 30px;
 }
 
 .u-bg-1 {

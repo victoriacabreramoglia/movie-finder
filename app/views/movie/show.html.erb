@@ -10,7 +10,7 @@
     <h1 class="movie__show-infobox-title">
       <%= @review.movie["Title"]%>
     </h1>
-    <p>
+    <p class="plot">
       <% if @review.movie["Plot"] === "N/A" %>
         <%= "We're sorry. Our IMDB database is missing plot and poster information for this movie. You can read the review" %>
         <%= link_to("here", @review_url) %>

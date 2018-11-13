@@ -23,3 +23,26 @@
     </script>
   </div>
 </section>
+<section class="u-bg-2">
+  <h1 class="critic__show-reviews-hed"><%= @critic.name + "'s movie reviews" %></h1>
+      <% @critic.reviews.each do |r| %>
+        <div class="grid--flush index__movie-box critic__show-movie-box">
+          <div class="grid__cell 1/4 index__movie-poster">
+            <img src=<%= r.movie["Poster"]%>>
+            <br>
+            <a href=<%= "https://www.rogerebert.com" + r.url %>> Read the review. </a>
+          </div>
+          <div class="grid__cell 1/2 index__movie-info">
+            <a href=<%="/movie/show?review_id=" + r.id.to_s %>>
+              <h1>
+                <%= r.movie_title %>
+              </h1>
+            </a>
+            <p>
+              <%= r.movie["Plot"] %>
+            </p>
+          </div>
+        </a>
+      </div>
+    <% end %>
+</section>
