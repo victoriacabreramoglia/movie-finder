@@ -14,6 +14,15 @@ class MoviesIndex extends React.Component {
             {
               Header: "Title",
               accessor: "movie_title"
+            },
+            {
+              Header: "Plot",
+              accessor: "movie.Plot"
+            },
+            {
+              Header: "Poster",
+              accessor: "movie.Poster",
+              Cell: row => <img src={`${row.value}`} />
             }
           ]}
         />

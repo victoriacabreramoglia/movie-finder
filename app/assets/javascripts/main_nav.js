@@ -12,9 +12,11 @@ $(document).ready(function() {
           <div class='page__nav-menu-accordion-item'>
             Critics
           </div>
-          <div class='page__nav-menu-accordion-item'>
-            Movies
-          </div>
+          <a href="/movie/index">
+            <div class='page__nav-menu-accordion-item'>
+              Movies
+            </div>
+          </a>
         </div>
         `);
     } else {

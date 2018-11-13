@@ -1,13 +1,24 @@
 <section class="slide movie__show-slide u-first-slide">
   <div class="movie__show-poster">
+    <% if (@review.movie["Plot"] != "N/A") %>
     <img src=<%= @review.movie["Poster"]%>>
+    <% else %>
+
+    <% end %>
   </div>
   <div class="movie__show-infobox">
     <h1 class="movie__show-infobox-title">
       <%= @review.movie["Title"]%>
     </h1>
     <p>
-      <%= @review.movie["Plot"] %>
+      <% if @review.movie["Plot"] === "N/A" %>
+        <%= "We're sorry. Our IMDB database is missing plot and poster information for this movie. You can read the review" %>
+        <%= link_to("here", @review_url) %>
+        <%= " or view the movie's IMDB page" %>
+        <%= link_to("here.", @imdb_url ) %>
+      <% else %>
+        <%= @review.movie["Plot"] %>
+      <% end %>
     </p>
     <br>
     <p>

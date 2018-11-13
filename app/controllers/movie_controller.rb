@@ -3,6 +3,7 @@ class MovieController < ApplicationController
   def show
     @review = Review.find(params[:review_id])
     @review_url = "https://www.rogerebert.com" + @review.url
+    @imdb_url = "https://www.imdb.com/title/" + @review.movie["imdbID"]
     @data = {
         labels: ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Emotional Range"],
         datasets: [{
