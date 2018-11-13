@@ -362,6 +362,10 @@ ul:last-child {
 .big5-hed {
   position: relative;
   top: 60px;
+  color: white;
+  background-color: $primary-color;
+  width: auto;
+  display: inline;
 }
 
 .active {
