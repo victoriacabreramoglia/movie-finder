@@ -1,5 +1,6 @@
 <section class="index__movie u-bg-1">
-  <% @reviews.slice(0,20).each do |r| %>
+  <%= paginate @reviews%>
+  <% @reviews.each do |r| %>
     <div class="grid--flush index__movie-box">
       <a href=<%="/movie/show?review_id=" + r.id.to_s %>>
         <div class="grid__cell 1/4 index__movie-poster">

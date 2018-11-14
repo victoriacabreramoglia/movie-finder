@@ -180,6 +180,11 @@ footer button {
   background-color: $slide-background-1;
 }
 
+.movie__show-poster {
+  width: 100%;
+  height: auto;
+}
+
 .movie__show-infobox {
   display: inline-block;
   width: 450px;
@@ -215,7 +220,7 @@ footer button {
 }
 
 .critic-bio {
-  overflow-y: scroll;
+  overflow-y: hidden;
   max-height: 222px;
 }
 
@@ -416,4 +421,30 @@ ul:last-child {
 
 .u-bg-2 {
   background-color: $slide-background-2;
+}
+
+nav.pagination {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 51px;
+  width: 200px;
+  position: fixed;
+  top: 75px;
+  left: 80%;
+  background-color: #91b7b5;
+}
+
+.current {
+  color: white;
+  font-weight: 900;
+}
+
+.gap {
+  color: white;
+}
+
+.pagination a {
+  margin-bottom: 51px;
+  color: white;
+  font-size: 18px;
 }

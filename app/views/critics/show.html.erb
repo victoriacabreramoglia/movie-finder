@@ -38,9 +38,45 @@
                 <%= r.movie_title %>
               </h1>
             </a>
-            <p>
-              <%= r.movie["Plot"] %>
-            </p>
+            <p class="plot">
+                  <% if r.movie["Plot"] === "N/A" %>
+                    <%= "We're sorry. Our IMDB database is missing plot and poster information for this movie. You can read the review" %>
+                    <%= link_to("here", r_url) %>
+                    <%= " or view the movie's IMDB page" %>
+                    <%= link_to("here.", @imdb_url ) %>
+                  <% else %>
+                    <%= r.movie["Plot"] %>
+                  <% end %>
+                </p>
+                <br>
+                <p>
+                  <strong>
+                    Actors:
+                  </strong>
+                  <%= r.movie["Actors"]%>
+                </p>
+                <p>
+                  <strong>
+                    Genres:
+                  </strong>
+                  <%= r.movie["Genre"]%>
+                </p>
+                <p>
+                  <strong>
+                    Score:
+                  </strong>
+                  <% if r.num.to_s.slice(1,2) === ".5" %>
+                    <%= r.num.to_s + "/4" %>
+                  <% else %>
+                    <%= r.num.to_s.slice(0,1) + "/4" %>
+                  <% end %>
+                </p>
+                <p>
+                  <strong>
+                    Runtime:
+                  </strong>
+                  <%= r.movie["Runtime"]%>
+                </p>
           </div>
         </a>
       </div>

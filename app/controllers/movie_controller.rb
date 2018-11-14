@@ -29,6 +29,6 @@ class MovieController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.order(:movie_title).page params[:page]
   end
 end
