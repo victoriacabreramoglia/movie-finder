@@ -51,7 +51,7 @@ gem 'twitter'
 # Watson
 gem 'ibm_watson'
 # homebrew OMDB api
-gem 'omdb-api', :path => "../omdb-api"
+gem 'omdb-api', git: "https://github.com/victorioc/modified-omdb-api"
 # react and related tools
 gem 'webpacker'
 gem 'react-rails'
