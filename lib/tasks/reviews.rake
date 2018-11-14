@@ -35,7 +35,6 @@ namespace :reviews do
     Review.all.each do |r|
       client = r.omdb_client
       m = client.find_by_id(r.movie["imdbID"], plot: "full")
-      byebug
       r.movie["Plot"] = m["Plot"]
       r.save
     end
