@@ -1,0 +1,24 @@
+<section class="index__movie u-bg-1">
+  <%= paginate @reviews%>
+  <% @reviews.each do |r| %>
+    <div class="grid--flush index__movie-box">
+      <a href=<%="/movie/show?review_id=" + r.id.to_s %>>
+        <div class="grid__cell 1/4 index__movie-poster">
+          <img src=<%= r.movie["Poster"]%>>
+        </div>
+      </a>
+      <div class="grid__cell 1/2 index__movie-info">
+        <a  href=<%="/movie/show?review_id=" + r.id.to_s %>>
+          <h1 class="index__movie-hed">
+            <%= r.movie_title %>
+          </h1>
+        </a>
+        <p>
+          <%= r.movie["Plot"] %>
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+<% end %>
+</section>

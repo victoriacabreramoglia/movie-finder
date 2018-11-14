@@ -1,0 +1,91 @@
+<section class="u-bg-1 grid user__dash-movie-index">
+  <div class="grid__cell 1/6 user__dash-left-nav">
+    <h1 class="user__dash-left-nav-hed">
+      Navigation
+    </h1>
+      <nav>
+      <a href="/dashboard">
+        <h2 class="user__dash-nav-item">
+          Personality
+        </h2>
+      </a>
+    </nav>
+    <nav>
+      <a href="/dashboard/critics">
+        <h2 class="user__dash-nav-item ">
+          Critics
+        </h2>
+      </a>
+    </nav>
+    <nav>
+      <a href="/dashboard/movies">
+        <h2 class="user__dash-nav-item active">
+          Movies
+        </h2>
+      </a>
+    </nav>
+  </div>
+  <% @matches.each do |m| %>
+    <% m.critic.reviews.where("favorite = 'true'").each do |r| %>
+      <div class="grid--flush index__movie-box">
+        <a href=<%="/movie/show?review_id=" + r.id.to_s %>>
+          <div class="grid__cell 1/4 index__movie-poster">
+            <img src=<%= r.movie["Poster"]%>>
+          </div>
+        </a>
+        <div class="grid__cell 1/2 index__movie-info">
+          <a  href=<%="/movie/show?review_id=" + r.id.to_s %>>
+            <h1 class="index__movie-hed">
+              <%= r.movie_title %>
+            </h1>
+          </a>
+          <p class="plot">
+            <% if r.movie["Plot"] === "N/A" %>
+              <%= "We're sorry. Our IMDB database is missing plot and poster information for this movie. You can read the review" %>
+              <%= link_to("here", r_url) %>
+              <%= " or view the movie's IMDB page" %>
+              <%= link_to("here.", @imdb_url ) %>
+            <% else %>
+              <%= r.movie["Plot"] %>
+            <% end %>
+          </p>
+          <br>
+          <p>
+            <strong>
+              Actors:
+            </strong>
+            <%= r.movie["Actors"]%>
+          </p>
+          <p>
+            <strong>
+              Genres:
+            </strong>
+            <%= r.movie["Genre"]%>
+          </p>
+          <p>
+            <strong>
+              Critic Score:
+            </strong>
+            <% if r.num.to_s.slice(1,2) === ".5" %>
+              <%= r.num.to_s + "/4" %>
+            <% else %>
+              <%= r.num.to_s.slice(0,1) + "/4" %>
+            <% end %>
+          </p>
+          <p>
+            <strong>
+              Runtime:
+            </strong>
+            <%= r.movie["Runtime"]%>
+          </p>
+          <br>
+          <br>
+          <p>
+            Reviewed by: <strong> <%= link_to(r.critic.name, ("critics/show?critic_id=" + r.critic.id.to_s), class:"user__dash-movie-index-link") %> </strong>
+          </p>
+        </div>
+      </a>
+    </div>
+    <% end %>
+  <% end %>
+</section>

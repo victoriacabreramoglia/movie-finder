@@ -1,21 +1,122 @@
+// INDEX
+// 1. Universal Settings
+// 2. Site-wide components
+//  2.a. Root dir components: slides, etc.
+// 3. Movie components
+//  3.a. Movie show view components
+// 4. Critic components
+//
+//
+// 5. User dashboard components
+// LAST: Utility classes
+
+// 1. Universal settings
 $primary-color: #c863e8;
-$secondary-color: #2a80ea;
+$primary-color-background: rgba(200, 99, 232, 0.5);
+$primary-gradient: #bd3de6;
+// $secondary-color: #2a80ea;
+$secondary-color: #d6448b;
+$off-white: #e1e3f1;
+$slide-background-1: #ceacb8;
+$slide-background-2: #91b7b5;
+$user-dashboard-background: #d0eaea;
 
 * {
   margin: 0;
   padding: 0;
-}
-.page__nav {
-  background-color: $primary-color;
-  display: block;
-  height: 25px;
-  padding: 10px 10px;
+  font-family: "Fira Sans", sans-serif;
 }
 
-.page__nav-header {
+p {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  color: white;
+  font-size: 36px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: white;
+}
+
+button {
+  padding: 5px 5px;
+  margin-right: 11px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: $secondary-color;
+  border: solid 2px white;
+}
+
+.twitter-button {
+  background-color: #54abed;
+  font: white;
+  display: block;
+  margin: 0 auto;
+  padding: 20px 20px;
+  font-weight: 900;
+}
+
+.twitter-button::before {
+  background-image: url(asset_path("twitter-icon.png"));
+  height: 5px;
+  width: 5px;
+}
+
+button a {
+  text-decoration: none;
+  color: white;
+  border: none;
+}
+// 2. Site-wide components
+.page__nav {
+  background: linear-gradient(to left, $primary-color, $primary-gradient);
+  display: block;
+  height: 25px;
+  width: 100%;
+  padding: 10px 10px 16px 10px;
+  position: fixed;
+  z-index: 1;
+}
+
+.page__nav-menu {
   display: inline-block;
   height: 100%;
   width: auto;
+  position: relative;
+  top: 3px;
+}
+
+.page__nav-menu-accordion {
+  background-color: $off-white;
+  height: auto;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  left: -9px;
+  top: 12px;
+}
+
+.page__nav-menu-accordion a {
+  text-decoration: none;
+}
+
+.page__nav-menu-accordion a:visited {
+  color: black;
+}
+.page__nav-menu-accordion-item {
+  border: solid 1px grey;
+  height: 46px;
+  padding: 27px 0px 0px 23px;
+  text-transform: uppercase;
 }
 
 .page__nav-logo {
@@ -25,25 +126,325 @@ $secondary-color: #2a80ea;
   margin: 0 auto;
   position: relative;
   top: -18px;
-  border: solid 2px $secondary-color;
+  border: solid 2px white;
   background-color: $secondary-color;
   border-radius: 72px;
   padding: 5px;
 }
 
-.page__nav-account-button {
-  padding: 5px 5px;
-  font-size: 16px;
-  border-radius: 10px;
-  background-color: $secondary-color;
+footer {
+  height: 46px;
+  display: block;
+  background-color: #d6448b;
+  position: relative;
+  z-index: 0;
+  padding-top: 4px;
 }
 
-button a {
-  text-decoration: none;
-  color: white;
-  border: none;
+footer button {
+  float: right;
+  margin-top: 5px;
+  background-color: $primary-color;
 }
+
+// 2.a. Root dir components
+
+.slide {
+  background-color: white;
+  height: calc(100vh - 51px);
+}
+
+.root__slide-1 {
+  background-image: url(root__slide-1.jpg);
+  background-size: cover;
+}
+
+.root__slide-hed {
+  background-color: $primary-color-background;
+}
+
+.root__slide-subhed {
+  font-size: 20px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+.root__slide-1-text-area {
+  height: 80%;
+  padding-top: 55px;
+}
+
+// 3. Movie components
+// 3.a. Movie show view components
+.movie__show-slide {
+  background-color: $slide-background-1;
+}
+
+.movie__show-poster {
+  width: 100%;
+  height: auto;
+}
+
+.movie__show-infobox {
+  display: inline-block;
+  width: 450px;
+  vertical-align: top;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.movie__show-infobox-title {
+  color: white;
+}
+
+.movie__show-poster {
+  display: inline-block;
+  width: 300px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.movie__show-critic-about {
+  padding-left: 45px;
+  position: relative;
+  top: 45px;
+}
+.critic-pic {
+  width: 100%;
+  height: auto;
+}
+
+.plot {
+  overflow: hidden;
+  max-height: 350px;
+}
+
+.critic-bio {
+  overflow-y: hidden;
+  max-height: 222px;
+}
+
+// 3.b. Movie index components
+
+.index__movie {
+  position: relative;
+  top: 51px;
+}
+
+.index__movie .index__movie-box:last-child {
+  margin-bottom: 51px;
+}
+
+.index__movie-box {
+  margin-bottom: 20px;
+}
+
+.index__movie-hed {
+  background-color: $slide-background-2;
+  text-decoration-color: none;
+}
+
+.index__movie-poster {
+  height: 300px;
+}
+
+.index__movie-poster img {
+  height: 100%;
+  width: auto;
+  max-width: 212px;
+}
+
+.index__movie-info {
+  height: auto;
+}
+
+// 4 critic components
+// 4.a critic show components
+
+.critic__show-reviews-hed {
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.critic__show-movie-box {
+  margin-bottom: 35px;
+}
+
+// 4.b. critic index components
+
+.critic__index-box {
+  margin-bottom: 50px;
+}
+.critic__index-pic {
+  width: 100%;
+  height: auto;
+}
+
+.critic__index-hed {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  line-height: 36px;
+}
+
+.critic__index-infobox {
+  height: auto;
+  overflow: hidden;
+}
+
+.critic__index-out-link {
+  background-color: $secondary-color;
+  color: white;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: -4px;
+  height: 25px;
+}
+
+// 5. User dashboard components
+
+.user__dash-slide {
+  background-color: $user-dashboard-background;
+  border-bottom: solid 1px #8fb8de;
+}
+
+.user__dash-left-nav {
+  border-right: solid 1px #8fb8de;
+  height: 100%;
+  z-index: 0;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding-top: 51px;
+  background-color: #f1f1f1;
+}
+
+.user__dash-left-nav-hed {
+  color: #8fb8de;
+  padding-top: 10px;
+  font-size: 25px;
+}
+
+.user__dash-left-nav-subhed {
+  display: inline-block;
+  position: relative;
+  top: 9px;
+  margin-bottom: 30px;
+}
+
+li {
+  margin-bottom: 3px;
+  color: white;
+  font-weight: 900;
+}
+
+ul:last-child {
+  margin-bottom: 15px;
+}
+
+.user__dash-solo-radar {
+  margin-left: 190px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.user__dash-bar {
+  height: 70%;
+}
+
+.user__dash-preferences-box {
+  background-color: $primary-color;
+  position: relative;
+  top: 25px;
+  left: 30px;
+}
+
+.user__dash-nav-item {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 14px;
+  color: grey;
+}
+
+.big5-hed {
+  position: relative;
+  top: 60px;
+  color: white;
+  background-color: $primary-color;
+  width: auto;
+  display: inline;
+}
+
+.user__dash-movie-index {
+  padding-left: 19%;
+  position: relative;
+  top: 51px;
+  margin-bottom: 51px;
+}
+
+.user__dash-movie-index-link {
+  background-color: $primary-color-background;
+}
+
+.active {
+  color: #5656de;
+}
+// LAST: Utility classes
 
 .u-100 {
   height: 100%;
+}
+
+.u-slide-half {
+  width: 50%;
+}
+
+.u-first-slide {
+  height: calc(100vh - 51px);
+  position: relative;
+  top: 51px;
+  z-index: 0;
+  margin-bottom: 51px;
+}
+
+.u-first-generic {
+  position: relative;
+  top: 51px;
+  padding-left: 30px;
+}
+
+.u-bg-1 {
+  background-color: $slide-background-1;
+}
+
+.u-bg-2 {
+  background-color: $slide-background-2;
+}
+
+nav.pagination {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 51px;
+  width: 200px;
+  position: fixed;
+  top: 75px;
+  left: 80%;
+  background-color: #91b7b5;
+}
+
+.current {
+  color: white;
+  font-weight: 900;
+}
+
+.gap {
+  color: white;
+}
+
+.pagination a {
+  margin-bottom: 51px;
+  color: white;
+  font-size: 18px;
 }

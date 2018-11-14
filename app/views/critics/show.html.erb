@@ -1,0 +1,84 @@
+<section class="movie__show-critic-about slide u-first-slide u-bg-1 grid--flush">
+  <div class="movie__show-critic-about grid__cell 1/2">
+    <div>
+      <img  class="critic-pic" src=<%= @critic.picture %>>
+    </div>
+    <div>
+      <h1>
+        <%= @critic.name %>
+      </h1>
+      <p class="critic-bio">
+        <%= @critic.bio %>
+      </p>
+    </div>
+  </div>
+  <div class="grid__cell 2/5 movie__show-critic-comparison">
+    <canvas id="myChart" width="350" height="350"></canvas>
+    <script>
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'radar',
+        data: <%== @data.to_json %>
+      })
+    </script>
+  </div>
+</section>
+<section class="u-bg-2">
+  <h1 class="critic__show-reviews-hed"><%= @critic.name + "'s movie reviews" %></h1>
+      <% @critic.reviews.each do |r| %>
+        <div class="grid--flush index__movie-box critic__show-movie-box">
+          <div class="grid__cell 1/4 index__movie-poster">
+            <img src=<%= r.movie["Poster"]%>>
+            <br>
+            <a href=<%= "https://www.rogerebert.com" + r.url %>> Read the review. </a>
+          </div>
+          <div class="grid__cell 1/2 index__movie-info">
+            <a href=<%="/movie/show?review_id=" + r.id.to_s %>>
+              <h1>
+                <%= r.movie_title %>
+              </h1>
+            </a>
+            <p class="plot">
+                  <% if r.movie["Plot"] === "N/A" %>
+                    <%= "We're sorry. Our IMDB database is missing plot and poster information for this movie. You can read the review" %>
+                    <%= link_to("here", r_url) %>
+                    <%= " or view the movie's IMDB page" %>
+                    <%= link_to("here.", @imdb_url ) %>
+                  <% else %>
+                    <%= r.movie["Plot"] %>
+                  <% end %>
+                </p>
+                <br>
+                <p>
+                  <strong>
+                    Actors:
+                  </strong>
+                  <%= r.movie["Actors"]%>
+                </p>
+                <p>
+                  <strong>
+                    Genres:
+                  </strong>
+                  <%= r.movie["Genre"]%>
+                </p>
+                <p>
+                  <strong>
+                    Score:
+                  </strong>
+                  <% if r.num.to_s.slice(1,2) === ".5" %>
+                    <%= r.num.to_s + "/4" %>
+                  <% else %>
+                    <%= r.num.to_s.slice(0,1) + "/4" %>
+                  <% end %>
+                </p>
+                <p>
+                  <strong>
+                    Runtime:
+                  </strong>
+                  <%= r.movie["Runtime"]%>
+                </p>
+          </div>
+        </a>
+      </div>
+    <% end %>
+</section>

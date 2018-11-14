@@ -4,11 +4,42 @@ require 'byebug'
 
 namespace :critics do
   desc "TODO"
-  task scrub_ebert: :environment do
+  task scrub_ebert_noreviews: :environment do
     Critic.all.each do |critic|
-      if (critic.reviews.count == 0)
+      if (critic.reviews.count < 4)
         critic.destroy!
       end
+    end
+  end
+
+  task grab_pictures: :environment do
+    Critic.all.each do |c|
+      page = Nokogiri::HTML(open(c.critic_page))
+      c.picture = page.xpath('//section[@class="main critic pad"]/article/figure/img/@src')
+      c.save
+    end
+  end
+
+  task scrub_ebert_lowreviews: :environment do
+    Critic.all.each do |critic|
+      scrap = true
+      critic.reviews.each do |r|
+        if r.num > 3.0
+          scrap = false
+        end
+      end
+      if scrap == true
+        critic.destroy!
+      end
+    end
+  end
+  task generate_favorites: :environment do
+    Review.all.each do |r|
+      r.favorite = false
+      r.save
+    end
+    Critic.all.each do |c|
+      c.generate_favorites
     end
   end
 

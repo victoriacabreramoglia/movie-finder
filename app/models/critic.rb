@@ -1,5 +1,5 @@
 class Critic < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :matches
   has_many :users, through: :matches
 
@@ -43,6 +43,15 @@ class Critic < ApplicationRecord
       end
     end
     review_text
+  end
+
+  def generate_favorites
+    self.reviews.each do |r|
+      if r.num > 3.0
+        r.favorite = true
+        r.save
+      end
+    end
   end
 
 end

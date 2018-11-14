@@ -4,29 +4,39 @@
     <title>SquidMovie</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700" rel="stylesheet">
+    <%= javascript_include_tag 'application'%>
   </head>
 
-  <body>
+  <body class="u-bg-2">
     <header class="page__nav grid grid--flush">
       <div class="grid__cell 1/3 u-100">
-        <%= image_tag("nav__header-menu.png", class: "page__nav-header") %>
+        <%= image_tag("nav__header-menu.png", class: "page__nav-menu") %>
       </div>
       <div class="grid__cell 1/3 u-100 grid--center">
-        <%= image_tag("logo.png", class: "page__nav-logo") %>
+        <a href="/"><%= image_tag("logo.png", class: "page__nav-logo") %></a>
       </div>
       <div class="grid__cell 1/3 u-100 grid--right">
+
         <button class="page__nav-account-button">
           <% if user_signed_in? %>
-            <%= link_to('My Dashboard') %>
+            <%= link_to('My Dashboard', dashboard_path) %>
         <% else %>
-            <<%= link_to('Get Started',new_user_session_path) %>
+            <%= link_to('Get Started',new_user_session_path) %>
         <% end %>
         </button>
       </div>
     </header>
     <%= yield %>
   </body>
+  <footer>
+    <button>
+    <% if user_signed_in? %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    <% else %>
+      <%= link_to('Login', new_user_session_path)  %>
+    <% end %>
+    </button>
+  </footer>
 </html>
