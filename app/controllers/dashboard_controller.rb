@@ -21,4 +21,8 @@ class DashboardController < ApplicationController
     @matches = current_user.matches
   end
 
+  def critics
+    @matches = current_user.matches
+  end
+
 end
