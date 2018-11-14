@@ -17,8 +17,8 @@ class DashboardController < ApplicationController
 
   end
 
-  def my_movies
-    @movies = current_user
+  def movies
+    @matches = current_user.matches
   end
 
 end

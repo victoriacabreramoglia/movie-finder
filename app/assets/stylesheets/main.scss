@@ -33,6 +33,7 @@ p {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 h1 {
@@ -132,9 +133,12 @@ button a {
 }
 
 footer {
-  height: 45px;
+  height: 46px;
   display: block;
-  background-color: $secondary-color;
+  background-color: #d6448b;
+  position: relative;
+  z-index: 0;
+  padding-top: 4px;
 }
 
 footer button {
@@ -366,6 +370,17 @@ ul:last-child {
   background-color: $primary-color;
   width: auto;
   display: inline;
+}
+
+.user__dash-movie-index {
+  padding-left: 19%;
+  position: relative;
+  top: 51px;
+  margin-bottom: 51px;
+}
+
+.user__dash-movie-index-link {
+  background-color: $primary-color-background;
 }
 
 .active {
