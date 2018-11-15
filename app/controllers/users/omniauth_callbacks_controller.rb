@@ -5,18 +5,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env["omniauth.auth"])
     @user.access_token = request.env["omniauth.auth"]["credentials"]["token"]
     @user.access_token_secret = request.env["omniauth.auth"]["credentials"]["secret"]
-    sign_in @user
-    if !current_user.initialized?
-      @user.grab_tweets
-      @user.generate_profile
-      @user.generate_matches
-      @matches = @user.matches.first
+    @user.grab_tweets
+    @user.generate_profile
+    @user.generate_matches
+    @matches = @user.matches.first
 
     # Uh oh, conceptual apparatus breaks: we actually only have a Review model, no Movie yet
-      @review_rec = @matches.recommend_movies.first
-      @user.email = rand.to_s[2..11] + "@gmail.com"
-    end
+    @review_rec = @matches.recommend_movies.first
+    @user.email = rand.to_s[2..11] + "@gmail.com"
     @user.save
-     redirect_to movie_show_path(review_id: @user.matches.first.recommend_movies.first.id)
+     sign_in @user
+     redirect_to movie_show_path(review_id: @review_rec.id)
   end
 end

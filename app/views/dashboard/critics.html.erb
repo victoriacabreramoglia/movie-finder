@@ -1,5 +1,5 @@
 <section class="u-bg-1 grid user__dash-movie-index">
-  <div class="grid__cell 1/9 user__dash-left-nav">
+  <div class="grid__cell 1/6 user__dash-left-nav">
     <h1 class="user__dash-left-nav-hed">
       Navigation
     </h1>
@@ -26,7 +26,7 @@
     </nav>
   </div>
   <% @matches.each do |m| %>
-    <div class="grid critic__index-box">
+    <div class="grid--flush critic__index-box">
       <div class="grid__cell 1/3">
         <img src=<%= m.critic.picture %> class="critic__index-pic">
         <a class="critic__index-out-link" href=<%= m.critic.critic_page%>>View critic page on rogerebert.com</a>
