@@ -7,6 +7,8 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 # Use pg as the database for Active Record
 gem 'pg'
+# to restore local DB to Heroku
+gem 'aws-sdk'
 # kaminari for pagination
 gem 'kaminari'
 # Use Puma as the app server
