@@ -1,5 +1,5 @@
 <section class="u-first-generic user__dash-slide slide grid">
-  <div class="grid__cell 1/6 user__dash-left-nav">
+  <div class="grid__cell 1/9 user__dash-left-nav">
     <h1 class="user__dash-left-nav-hed">
       Navigation
     </h1>
@@ -51,9 +51,9 @@
     </ul>
   </div>
 </section>
-<% current_user.profile["personality"].each do |big5_data| %>
-  <section class="user__dash-slide user__dash-slide-bar grid--center">
-    <div class="grid__cell 1/2 user__dash-bar">
+<section class="user__dash-slide user__dash-bar-slide grid--center">
+  <% current_user.profile["personality"].each do |big5_data| %>
+    <div class="grid__cell 1/4 user__dash-bar">
       <canvas id="<%= big5_data["trait_id"] %>" width="350" height="350"></canvas>
       <script>
         var ctx = document.getElementById("<%= big5_data["trait_id"] %>").getContext('2d');
@@ -77,5 +77,5 @@
         <%= big5_data["name"] %>
       </h3>
     </div>
-  </section>
-<% end %>
+  <% end %>
+</section>
