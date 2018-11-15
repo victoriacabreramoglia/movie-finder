@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
     @data = {
     labels: ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Emotional Range"],
     datasets: [
-      { label: "Current User (percentile)",
+      { label: "Current User",
         backgroundColor: "rgba(255, 0, 0, 0.4)",
         data: [
         current_user.profile["personality"][0]["raw_score"].to_d,
