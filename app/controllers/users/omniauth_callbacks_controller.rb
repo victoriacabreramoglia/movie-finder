@@ -7,6 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.access_token_secret = request.env["omniauth.auth"]["credentials"]["secret"]
     sign_in @user
     if !current_user.initialized?
+      @user.initialized = true
       @user.grab_tweets
       @user.generate_profile
       @user.generate_matches
@@ -17,6 +18,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.email = rand.to_s[2..11] + "@gmail.com"
     end
     @user.save
-     redirect_to movie_show_path(review_id: @user.matches.first.recommend_movies.first.id)
+     redirect_to dashboard_path
   end
 end

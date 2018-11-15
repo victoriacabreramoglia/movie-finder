@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700" rel="stylesheet">
     <%= javascript_include_tag 'application'%>
+    <link rel="icon" href="assets/images/nav__header-menu.png">
   </head>
 
   <body class="u-bg-2">
@@ -23,7 +24,7 @@
           <% if user_signed_in? %>
             <%= link_to('My Dashboard', dashboard_path) %>
         <% else %>
-            <%= link_to('Get Started',new_user_session_path) %>
+            <%= link_to('Get Started', user_twitter_omniauth_authorize_path) %>
         <% end %>
         </button>
       </div>
@@ -35,7 +36,7 @@
     <% if user_signed_in? %>
       <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
     <% else %>
-      <%= link_to('Login', new_user_session_path)  %>
+      <%= link_to('Login', user_twitter_omniauth_authorize_path)  %>
     <% end %>
     </button>
   </footer>
