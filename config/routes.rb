@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'error/timeline'
   get 'critics/index'
   get 'critics/show'
   get 'movie/show'
