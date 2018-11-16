@@ -21,7 +21,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to error_timeline_path
       end
     else
-      redirect_to dashboard_path
+      if @user.timeline.split(" ").count > 150
+        redirect_to dashboard_path
+      else
+      redirect_to error_timeline_path
+      end
     end
 
   end
