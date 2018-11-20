@@ -27,7 +27,7 @@ require 'json'
     if sum != 0.0
       1 - ((sum/obj1_flattened.count)**0.5)
     else
-      0
+      1
     end
   end
 
@@ -39,6 +39,7 @@ require 'json'
     end
     # Produces ascending order sorted by euclidean distance
     match_arr.sort_by! {|match| [match[:distance]]}
+    match_arr.reverse!
     # Determine how many matches
     match_arr = match_arr.slice(0,3)
     match_arr.each do |match|
